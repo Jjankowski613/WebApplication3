@@ -109,30 +109,32 @@ public class RepertuarController : Controller
     [HttpPost]
     public async Task<IActionResult> Rezerwacja(int MovieID, DateOnly data, TimeOnly time)
     {
-        var movie = _movieService.GetMovieById(MovieID);
-        if (movie == null)
-        {
-            return NotFound("Nie znaleziono filmu.");
-        }
+    
+    var movie = await _dbContext.Movies.FirstOrDefaultAsync(m => m.Id == MovieID);
 
-        var userId = _userManager.GetUserId(User);
-
-        var reservation = new Reservation
-        {
-            MovieId = MovieID,
-            UserId = userId,
-            ReservationDate = data,
-            ReservationTime = time,
-            MovieTitle = movie.Title
-        };
-
-        _dbContext.Reservations.Add(reservation);
-        await _dbContext.SaveChangesAsync();
-
-        TempData["ReservationSuccessMessage"] = $"Pomyślnie zarezerwowano seans na film '{movie.Title}' na {data:dd-MM-yyyy} {time:HH:mm}";
-
-        return RedirectToAction("MovieDetails", "Repertuar", new { id = MovieID });
+    if (movie == null)
+    {
+        return NotFound("Nie znaleziono filmu.");
     }
+
+    var userId = _userManager.GetUserId(User);
+
+    var reservation = new Reservation
+    {
+        MovieId = MovieID,
+        UserId = userId,
+        ReservationDate = data,
+        ReservationTime = time,
+        MovieTitle = movie.Title
+    };
+
+    _dbContext.Reservations.Add(reservation);
+    await _dbContext.SaveChangesAsync();
+
+    TempData["ReservationSuccessMessage"] = $"Pomyślnie zarezerwowano seans na film '{movie.Title}' na {data:dd-MM-yyyy} {time:HH:mm}";
+
+    return RedirectToAction("MovieDetails", "Repertuar", new { id = MovieID });
+}
     
 
 }
