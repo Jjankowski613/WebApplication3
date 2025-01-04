@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication3.Models.Repertuar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Wyniki sesji</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nowy wynik</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfSeries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfReps)
+            </th>
+            <th>
+                @Html.DisplayName("Nazwa ćwiczenia")
+            </th>
+            <th>
+                @Html.DisplayName("Numer sesji")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfSeries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfReps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Session.Start)
+                -
+                @Html.DisplayFor(modelItem => item.Session.End)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

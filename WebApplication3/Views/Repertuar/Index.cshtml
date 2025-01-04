@@ -1,0 +1,84 @@
+﻿@model List<MovieRating>
+
+@{
+    ViewData["Title"] = "Movies";
+
+}
+
+<div class="movie-grid">
+    @foreach (var movie in Model)
+    {
+        <a class="movie-tile" asp-controller="Repertuar" asp-action="MovieDetails" asp-route-id="@movie.Id">
+            <div class="movie-tile-content">
+                <img src="@movie.ImageUrl" alt="@movie.Title" />
+                <h3>@movie.Title</h3>
+                <p>Średnia Ocena: @movie.AverageRating (z @movie.NumberOfRatings ocen)</p>
+            </div>
+        </a>
+        
+    }
+</div>
+
+<style>
+    .movie-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .movie-tile {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.2s ease;
+        background-color: #000;
+        margin-bottom: 20px;
+    }
+
+        .movie-tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background-color: #111;
+        }
+
+    .movie-tile-content {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .movie-tile-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .movie-tile-content h3 {
+            margin: 10px 0;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .movie-tile-content p {
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #ddd;
+        }
+
+        .movie-tile-content:hover h3, .movie-tile-content:hover p {
+            text-decoration: none;
+        }
+
+    form {
+        margin-top: 10px;
+    }
+    .btn primary{
+        background-color:#101084;
+        border-color: #ffffff;
+    }
+</style>

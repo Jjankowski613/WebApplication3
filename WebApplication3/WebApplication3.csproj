@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-WebApplication3-da5ab760-fdfc-459a-b7d6-a23324ffac46</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Exercises\**" />
+    <Compile Remove="Views\Ratings\**" />
+    <Content Remove="Views\Exercises\**" />
+    <Content Remove="Views\Ratings\**" />
+    <EmbeddedResource Remove="Views\Exercises\**" />
+    <EmbeddedResource Remove="Views\Ratings\**" />
+    <None Remove="Views\Exercises\**" />
+    <None Remove="Views\Ratings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\RatingsController.cs" />
+    <Compile Remove="Controllers\Repertuar1.cs" />
+    <Compile Remove="Controllers\Reservations.cs" />
+    <Compile Remove="Controllers\Zarezerwuj.cs" />
+    <Compile Remove="Models\Rezerwacje.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\Privacy.cshtml" />
+    <Content Remove="Views\Privacy\Create.cshtml" />
+    <Content Remove="Views\Privacy\Delete.cshtml" />
+    <Content Remove="Views\Privacy\Details.cshtml" />
+    <Content Remove="Views\Repertuar\Create.cshtml" />
+    <Content Remove="Views\Repertuar\Delete.cshtml" />
+    <Content Remove="Views\Repertuar\Details.cshtml" />
+    <Content Remove="Views\Repertuar\Index - kopiować.cshtml" />
+    <Content Remove="Views\Repertuar\Rezerwacja.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Privacy\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\Nowy folder\" />
+  </ItemGroup>
+
+</Project>

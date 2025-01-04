@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebApplication3.Models.Reservation>
+
+    @{
+    ViewData["Title"] = "Twoje Rezerwacje";
+    }
+
+    <h1>Twoje Rezerwacje</h1>
+
+    @if (Model.Any())
+    {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Film</th>
+                <th>Data</th>
+                <th>Godzina</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model)
+            {
+            <tr>
+                <td>@reservation.MovieTitle</td>
+                <td>@reservation.ReservationDate.ToString("dd-MM-yyyy")</td>
+                <td>@reservation.ReservationTime.ToString("HH:mm")</td>
+                <td>
+                    <form asp-action="Delete" asp-controller="Reservation" method="post">
+                        <input type="hidden" name="id" value="@reservation.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+    else
+    {
+    <p>Nie masz żadnych zapisanych rezerwacji.</p>
+
+    
+
+    }
+@if (TempData["DeleteMessage"] != null)
+{
+    <p class="alert alert-success">@TempData["DeleteMessage"]</p>
+}
+<a asp-action="UserRatings" asp-controller="Reservation" class="btn btn-primary">Zobacz swoje oceny</a>
+
+<style>
+.table{
+    color:#ffffff;
+}
+
+.btn-primary{
+    background-color:#101084;
+        border-color: #101084;
+}
+
+    .btn-primary:hover {
+        background-color: #101084;
+        border-color:#ffffff;
+    }
+
+    .alert {
+        background-color: #11ff11;
+        border-color: #ffffff;
+    }
+</style>
+
+

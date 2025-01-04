@@ -1,0 +1,51 @@
+﻿@model WebApplication3.Models.Repertuar
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Usuwanie</h1>
+
+<h3>Jesteś pewny/a, że chcesz usunąć?</h3>
+<div>
+    <h4>Ćwiczenie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumOfSeries)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumOfSeries)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumOfReps)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumOfReps)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Nazwa ćwiczenia")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ExerciseType.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Numer sesji")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Session.Start) - @Html.DisplayFor(model => model.Session.End)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Wróć do listy</a>
+    </form>
+</div>

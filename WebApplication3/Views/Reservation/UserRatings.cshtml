@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication3.Models.UserRatingViewModel>
+
+
+@{
+    ViewData["Title"] = "Twoje Oceny";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Film</th>
+                <th>Ocena</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rating in Model)
+            {
+                <tr>
+                    <td>@rating.MovieTitle</td>
+                    <td>@rating.Rating</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nie masz jeszcze żadnych ocen.</p>
+}
+<a href="/Reservation" class="btn btn-secondary">Wróć do Rezerwacji</a>
+
+<style>
+    .table {
+        color: #ffffff;
+    }
+
+    .btn-secondary {
+        background-color: #101084;
+        border-color: #101084;
+    }
+
+        .btn-secondary:hover {
+            background-color: #101084;
+            border-color: #ffffff;
+        }
+</style>

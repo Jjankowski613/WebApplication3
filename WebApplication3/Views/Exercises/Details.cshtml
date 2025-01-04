@@ -1,0 +1,47 @@
+﻿@model WebApplication3.Models.Repertuar
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Ćwiczenie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumOfSeries)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumOfSeries)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumOfReps)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumOfReps)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Nazwa ćwiczenia")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ExerciseType.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Numer sesji")
+        <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Session.Start) - @Html.DisplayFor(model => model.Session.End)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć do listy</a>
+</div>

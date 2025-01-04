@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <style>
+        .homepage {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        .movie-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .movie-tile {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .movie-tile h3 {
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background-color: #101084;
+            border-color: #101084;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #101084;
+                border-color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+    <div class="homepage">
+        <header>
+            <h1>Witamy w naszym systemie rezerwacji filmów</h1>
+            <p>Przeglądaj filmy, oceniaj i rezerwuj swoje ulubione seanse!</p>
+        </header>
+
+        <section class="movie-grid">
+            <div class="movie-tile">
+                <img src="/images/inception.jpg" alt="Incepcja" class="movie-image" />
+                <h3>Incepcja</h3>
+                <p><strong>Opis:</strong> Historia Dominicka Cobba, mistrza złodziei...</p>
+                <a href="Repertuar/MovieDetails/1" class="btn btn-primary">Więcej szczegółów</a>
+            </div>
+            <div class="movie-tile">
+                <img src="/images/matrix.jpg" alt="Matrix" class="movie-image" />
+                <h3>Matrix</h3>
+                <p><strong>Opis:</strong> Historia Neo, który odkrywa prawdę o rzeczywistości...</p>
+                <a href="Repertuar/MovieDetails/2" class="btn btn-primary">Więcej szczegółów</a>
+            </div>
+            <div class="movie-tile">
+                <img src="/images/interstellar.jpg" alt="Interstellar" class="movie-image" />
+                <h3>Interstellar</h3>
+                <p><strong>Opis:</strong> Podróż przez czas i przestrzeń w poszukiwaniu nowego domu...</p>
+                <a href="Repertuar/MovieDetails/3" class="btn btn-primary">Więcej szczegółów</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
