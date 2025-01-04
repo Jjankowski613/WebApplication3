@@ -24,29 +24,32 @@ public class RepertuarController : Controller
     }
 
     [AllowAnonymous]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-
-        var movies = _movieService.GetAllMovies().Select(m => new MovieRating
-        {
-            Id = m.Id,
-            Title = m.Title,
-            AverageRating = _dbContext.UserRatings
-            .Where(r => r.MovieId == m.Id)
-            .Average(r => (double?)r.Rating) ?? 0,
-            NumberOfRatings = _dbContext.UserRatings
-            .Count(r => r.MovieId == m.Id),
-            ImageUrl = m.ImageUrl
-        }).ToList();
+        var movies = await _dbContext.Movies
+            .Select(movie => new MovieRating
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                ImageUrl = movie.ImageUrl,
+                AverageRating = _dbContext.UserRatings
+                    .Where(r => r.MovieId == movie.Id)
+                    .Average(r => (double?)r.Rating) ?? 0, // Oblicz średnią ocen
+                NumberOfRatings = _dbContext.UserRatings
+                    .Count(r => r.MovieId == movie.Id) // Liczba ocen
+            })
+            .ToListAsync();
 
         return View(movies);
     }
 
+
     [AllowAnonymous]
-    public IActionResult MovieDetails(int id)
+    public async Task<IActionResult> MovieDetails(int id)
     {
-        // Pobierz szczegóły filmu
-        var movie = _movieService.GetMovieById(id);
+        var movie = await _dbContext.Movies
+        .FirstOrDefaultAsync(m => m.Id == id);
+
         if (movie == null)
         {
             return NotFound("Nie znaleziono filmu.");

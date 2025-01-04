@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication3.Data;
@@ -36,17 +37,19 @@ public class ReservationController : Controller
     {
         var userId = _userManager.GetUserId(User);
 
-        // Pobierz oceny użytkownika razem z tytułami filmów
-        var userRatings = (from rating in _dbContext.UserRatings
-                           join movie in _dbContext.Movies on rating.MovieId equals movie.Id
-                           where rating.UserId == userId
-                           orderby rating.Id descending
-                           select new UserRatingViewModel
-                           {
-                               Rating = rating.Rating,
-                               MovieTitle = movie.Title
-                           }).ToList();
+        // Pobierz dane użytkownika wraz z powiązanymi filmami
+        var userRatings = await _dbContext.UserRatings
+            .Where(r => r.UserId == userId)
+            .Include(r => r.Movie) // Ładujemy powiązane dane o filmach
+            .OrderByDescending(r => r.Id)
+            .Select(r => new UserRatingViewModel
+            {
+                Rating = r.Rating,
+                MovieTitle = r.Movie != null ? r.Movie.Title : "Brak tytułu"
+            })
+            .ToListAsync();
 
+        // Zwrócenie listy ocen do widoku
         return View(userRatings);
     }
 

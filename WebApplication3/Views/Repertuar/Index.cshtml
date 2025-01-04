@@ -2,8 +2,9 @@
 
 @{
     ViewData["Title"] = "Movies";
-
 }
+
+<h1>Lista Filmów</h1>
 
 <div class="movie-grid">
     @foreach (var movie in Model)
@@ -15,9 +16,9 @@
                 <p>Średnia Ocena: @movie.AverageRating (z @movie.NumberOfRatings ocen)</p>
             </div>
         </a>
-        
     }
 </div>
+
 
 <style>
     .movie-grid {

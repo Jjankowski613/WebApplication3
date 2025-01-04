@@ -10,12 +10,16 @@
   <ItemGroup>
     <Compile Remove="Views\Exercises\**" />
     <Compile Remove="Views\Ratings\**" />
+    <Compile Remove="wwwroot\Nowy folder\**" />
     <Content Remove="Views\Exercises\**" />
     <Content Remove="Views\Ratings\**" />
+    <Content Remove="wwwroot\Nowy folder\**" />
     <EmbeddedResource Remove="Views\Exercises\**" />
     <EmbeddedResource Remove="Views\Ratings\**" />
+    <EmbeddedResource Remove="wwwroot\Nowy folder\**" />
     <None Remove="Views\Exercises\**" />
     <None Remove="Views\Ratings\**" />
+    <None Remove="wwwroot\Nowy folder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,7 +58,6 @@
   <ItemGroup>
     <Folder Include="Views\Privacy\" />
     <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\Nowy folder\" />
   </ItemGroup>
 
 </Project>

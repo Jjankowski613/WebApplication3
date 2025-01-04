@@ -1,11 +1,6 @@
 ﻿@model IEnumerable<WebApplication3.Models.UserRatingViewModel>
 
-
-@{
-    ViewData["Title"] = "Twoje Oceny";
-}
-
-<h1>@ViewData["Title"]</h1>
+<h1>Twoje Oceny</h1>
 
 @if (Model.Any())
 {
@@ -31,6 +26,7 @@ else
 {
     <p>Nie masz jeszcze żadnych ocen.</p>
 }
+
 <a href="/Reservation" class="btn btn-secondary">Wróć do Rezerwacji</a>
 
 <style>

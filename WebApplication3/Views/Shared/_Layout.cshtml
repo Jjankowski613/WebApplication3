@@ -3,20 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title color:#ffffff>@ViewData["Title"] MultiCinema</title>
+    <title>@ViewData["Title"] MultiCinema</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication3.styles.css" asp-append-version="true" />
     <style>
-        navbar-brand {
+        .navbar-brand {
             color: #ffffff;
         }
-
-        nav  {
-            background-color: #101084;
-            color: #101084;
-        }
-
         body {
             background-color: #000000;
         }
@@ -33,22 +27,11 @@
                     color: #FFD700;
                 }
 
-            .navbar-brand:hover {
-                color: #FFD700;
-            }
-
         .footer {
             background-color: #101084;
             color: #101084;
         }
 
-        a {
-            color: #FFFFFF;
-        }
-
-            a:hover {
-                color: #FFD700;
-            }
 
         .container {
             color: #FFFFFF;
@@ -74,7 +57,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-action="Index">MultiCinema</a>
+                <a class="navbar-brand">MultiCinema</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -88,7 +71,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Repertuar" asp-action="Index">Repertuar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Reservation" asp-action="Index">Historia Rezerwacji</a>
+                            <a class="nav-link" asp-area="" asp-controller="Reservation" asp-action="Index">Twój profil</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

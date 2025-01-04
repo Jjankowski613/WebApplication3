@@ -2,7 +2,7 @@
 {
     public class UserRatingViewModel
     {
-        public string MovieTitle { get; set; }
         public int Rating { get; set; }
+        public string MovieTitle { get; set; }
     }
 }

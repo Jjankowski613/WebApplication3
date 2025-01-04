@@ -5,6 +5,7 @@ using WebApplication3.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -19,7 +20,16 @@ builder.Services.AddSingleton<MovieService>(); // Dodaj tê liniê
 
 var app = builder.Build();
 
+// Inicjalizacja bazy danych
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    var movieService = services.GetRequiredService<MovieService>();
 
+    // Inicjalizacja bazy danych
+    DbInitializer.Initialize(context, movieService);
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -52,6 +62,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+app.UseAuthentication();
+app.MapControllers();
+
+builder.Services.AddScoped<MovieService>();
 
 
 
